@@ -1,0 +1,9 @@
+<mapper namespace="kr.jobtc.mybatis.TestMapper">
+    <select id="totSize" parameterType="String" resultType="Integer">
+        select count(serial) totSize from board
+        where mid     like '%${_parameter}%'
+        or    subject like '%${_parameter}%'
+        or    doc     like '%${_parameter}%'
+    </select>
+
+</mapper>
