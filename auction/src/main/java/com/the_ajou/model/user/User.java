@@ -48,18 +48,9 @@ public class User {
     @Column(name = "updatedAt")
     private String updatedAt;
 
-    @Column(name = "gender")
-    private char gender;
-
-    @Column(name = "birth")
-    private String birth;
-
-    @Column(name = "name")
-    private String name;
-
 
     @Builder
-    public User(String email, String password, String phoneNum, String address, String createdAt, String updatedAt, char status, String nickName, int point, char gender, String birth, String name){
+    public User(String email, String password, String phoneNum, String address, String createdAt, String updatedAt, char status, String nickName, int point){
         this.email = email;
         this.password = password;
         this.phoneNum = phoneNum;
@@ -69,29 +60,16 @@ public class User {
         this.status = status;
         this.nickName = nickName;
         this.point = point;
-        this.gender = gender;
-        this.birth = birth;
-        this.name = name;
-    }
-
-    public void updatePoint(int point){
-        this.point = this.point + point;
     }
 
     public void updateUser(UserUpdateDTO userUpdateDTO){
 
         if(!Objects.equals(userUpdateDTO.getPhoneNum(), ""))
             this.phoneNum = userUpdateDTO.getPhoneNum();
-        if(!Objects.equals(userUpdateDTO.getName(), ""))
-            this.name = userUpdateDTO.getName();
         if(!Objects.equals(userUpdateDTO.getAddress(), ""))
             this.address = userUpdateDTO.getAddress();
         if(!Objects.equals(userUpdateDTO.getNickName(), ""))
             this.nickName = userUpdateDTO.getNickName();
-        if(userUpdateDTO.getGender() == 'M' || userUpdateDTO.getGender() == 'F')
-            this.gender = userUpdateDTO.getGender();
-        if(!Objects.equals(userUpdateDTO.getBirth(), ""))
-            this.birth = userUpdateDTO.getBirth();
 
         this.updatedAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
     }

@@ -55,9 +55,9 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("The Ajou Swagger")
-                .description("the ajou swagger config")
-                .version("1.0.2")
+                .title("Database Recommendation System")
+                .description("201923677 김현빈")
+                .version("1.0.0")
                 .build();
     }
 }

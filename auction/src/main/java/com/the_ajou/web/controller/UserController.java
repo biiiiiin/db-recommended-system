@@ -24,15 +24,6 @@ public class UserController {
         return userService.findUserById(id);
     }
 
-    @PostMapping("/api/auth/login")
-    public Object login(@RequestBody UserLoginDTO userLoginDTO){
-        return userService.login(userLoginDTO);
-    }
-
-    @PostMapping("/api/auth/pw")
-    public boolean changePassword(@RequestBody UserLoginDTO userLoginDTO){
-        return userService.changePassword(userLoginDTO);
-    }
 
     @PatchMapping("/api/user/update")
     public boolean updateUser(@RequestBody UserUpdateDTO userUpdateDTO){
@@ -44,18 +35,19 @@ public class UserController {
         return userService.deleteUser(id);
     }
 
-    @PostMapping("/api/auth/findEmail")
-    public String findEmail(@RequestBody UserFindDTO userFindDTO){
-        return userService.findEmail(userFindDTO);
-    }
-
-    @PatchMapping("/api/user/registerAddress")
-    public boolean updateAddress(@RequestBody UserAddressUpdateDTO userAddressUpdateDTO){
-        return userService.updateAddress(userAddressUpdateDTO);
-    }
 
     @GetMapping("/api/user/getId/{nickName}")
     public int getUserId(@PathVariable("nickName") String nickName){
         return userService.getUserId(nickName);
+    }
+
+    @GetMapping("/api/user/save/time")
+    public long saveUserTime(@PathVariable("num") int num){
+        return userService.getSaveTime(num);
+    }
+
+    @GetMapping("/api/user/find/time")
+    public long getUserById(@PathVariable("num") int num){
+        return userService.findByIds(num);
     }
 }

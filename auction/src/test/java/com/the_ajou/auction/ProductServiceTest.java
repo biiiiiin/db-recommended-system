@@ -7,7 +7,6 @@ import com.the_ajou.model.product.Product;
 import com.the_ajou.model.product.ProductRepository;
 import com.the_ajou.model.user.User;
 import com.the_ajou.model.user.UserRepository;
-import com.the_ajou.service.PurchaseService;
 import com.the_ajou.web.dao.product.ProductResponseDAO;
 import com.the_ajou.web.dao.product.ProductSearchResponseDAO;
 import com.the_ajou.web.dto.purchase.PurchaseCreateDTO;

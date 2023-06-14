@@ -41,25 +41,12 @@ public class PointService {
         return pointResponseDAOS;
     }
 
-//    @Transactional
-//    public PointResponseDAO findHistoryById(int pointLogId){
-//        Point point = pointRepository.findById(pointLogId)
-//                .orElseThrow(()->new IllegalArgumentException("존재하지 않은 포인트 내역입니다."));
-//
-//        return PointResponseDAO.builder()
-//                .id(point.getId())
-//                .userId(point.getUser().getId())
-//                .createdAt(point.getCreatedAt())
-//                .point(point.getPoint())
-//                .build();
-//    }
-
     @Transactional
     public boolean chargePoint(PointCreateDTO pointCreateDTO){
         User user = userRepository.findById(pointCreateDTO.getUserId())
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 사용자입니다."));
 
-        user.updatePoint(pointCreateDTO.getPoint());
+        user.setPoint(user.getPoint() + pointCreateDTO.getPoint());
         user.setUpdatedAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
 
         Point point = Point.builder()
